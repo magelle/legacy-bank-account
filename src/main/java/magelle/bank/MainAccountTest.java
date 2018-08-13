@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 public class MainAccountTest {
 
     public static void main(String [] args) throws SQLException {
-        AccountService accountService = new AccountService();
+        AccountService accountService = AccountService.getInstance();
 
         accountService.add(1000);
         accountService.add(2000);

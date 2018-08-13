@@ -22,6 +22,8 @@ public class AccountService {
             throw new IllegalArgumentException("invalid param");
         }
         int balance = AccountRepository.getInstance().getBalance();
+        if (balance - amount < 0)
+            throw new IllegalStateException("Invalid State");
         Op op = new Op();
         op.setDate(new Date());
         op.setAmount1(amount);
@@ -34,6 +36,9 @@ public class AccountService {
         if (amount <= 0)
             throw new IllegalArgumentException("invalid arg");
         int balance = AccountRepository.getInstance().getBalance();
+        if (balance - amount < 0) {
+            throw new IllegalStateException("Invalid State");
+        }
         Op op = new Op();
         op.setDate(new Date());
         op.setAmount2((long) amount);
